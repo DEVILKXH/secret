@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.secret.mapper.AppUserRoleMapper">
+	<resultMap type="com.app.secret.entity.AppUserRole" id="BaseResultMap">
+		<result column="UUID" property="uuid"/>
+		<result column="ROLE_ID" property="roleId"/>
+		<result column="USER_ID" property="userId"/>
+	</resultMap>
+	
+	<sql id="defaultSelectClause">
+	t1.UUID as uuid,	t1.ROLE_ID as roleId,	t1.USER_ID as userId	</sql>
+	
+	<select id="selectList" parameterMap="com.app.secret.entity.AppUserRole" resultMap="BaseResultMap">
+	SELECT 
+		<include refid="defaultSelectClause"/>
+	from APP_USER_ROLE
+	<include refid="defaultWhereClause"/>
+		
+	</select>
+	
+	<sql id="defaultWhereClause">
+		<trim prefix="where" prefixOverrides="and|or">
+		<if test="uuid != null">and t.UUID = #{uuid}</if>
+		<if test="roleId != null">and t.ROLE_ID = #{roleId}</if>
+		<if test="userId != null">and t.USER_ID = #{userId}</if>
+		</trim>
+	</sql>
+	
+</mapper>   
