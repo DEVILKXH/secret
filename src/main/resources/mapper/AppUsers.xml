@@ -26,21 +26,21 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t1.UUID as uuid,	t1.USER_CODE as userCode,	t1.USER_NAME as userName,	t1.USER_PSWD as userPswd,	t1.USER_MOILE as userMoile,	t1.USER_ADDRESS as userAddress,	t1.USER_BIRTHDAY as userBirthday,	t1.USER_GENDER as userGender,	t1.USER_FACE as userFace,	t1.USER_ENABLE as userEnable,	t1.USER_LOGIN_COUNT as userLoginCount,	t1.USER_UNSEALING as userUnsealing,	t1.USER_LAST_LOGIN_TIME as userLastLoginTime,	t1.DOC_CREATE_TIME as docCreateTime,	t1.DOC_CREATOR_ID as docCreatorId,	t1.DOC_CREATOR_NAME as docCreatorName,	t1.DOC_ALTEROR_TIME as docAlterorTime,	t1.DOC_ALTEROR_ID as docAlterorId,	t1.DOC_ALTEROR_NAME as docAlterorName	</sql>
-	
-	<select id="selectList" parameterMap="com.app.secret.entity.Login" resultMap="BaseResultMap">
-	SELECT 
+	t.UUID as uuid,	t.USER_CODE as userCode,	t.USER_NAME as userName,	t.USER_PSWD as userPswd,	t.USER_MOILE as userMoile,	t.USER_ADDRESS as userAddress,	t.USER_BIRTHDAY as userBirthday,	t.USER_GENDER as userGender,	t.USER_FACE as userFace,	t.USER_ENABLE as userEnable,	t.USER_LOGIN_COUNT as userLoginCount,	t.USER_UNSEALING as userUnsealing,	t.USER_LAST_LOGIN_TIME as userLastLoginTime,	t.DOC_CREATE_TIME as docCreateTime,	t.DOC_CREATOR_ID as docCreatorId,	t.DOC_CREATOR_NAME as docCreatorName,	t.DOC_ALTEROR_TIME as docAlterorTime,	t.DOC_ALTEROR_ID as docAlterorId,	t.DOC_ALTEROR_NAME as docAlterorName	</sql>
+
+	<select id="selectList" parameterType="com.app.secret.entity.AppUsers" resultMap="BaseResultMap">
+	SELECT
 		<include refid="defaultSelectClause"/>
-	from APP_USERS
+	from APP_USERS t
 	<include refid="defaultWhereClause"/>
-		
+
 	</select>
 
-	<select id="loadUserByUsername" parameterMap="java.lang.String" resultMap="BaseResultMap">
+	<select id="loadUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
 		SELECT
 		<include refid="defaultSelectClause"/>
-		from APP_USERS
-		WHERE USER_CODE = #{userName}
+		from APP_USERS t
+		WHERE t.USER_CODE = #{userName}
 	</select>
 	
 	<sql id="defaultWhereClause">

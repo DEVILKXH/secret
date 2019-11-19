@@ -21,12 +21,12 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t1.UUID as uuid,	t1.MENU_NAME as menuName,	t1.MENU_CODE as menuCode,	t1.MENU_ICON as menuIcon,	t1.PARENT_MENU_NAME as parentMenuName,	t1.PARENT_MENU_CODE as parentMenuCode,	t1.MENU_PATH as menuPath,	t1.MENU_ENABLE as menuEnable,	t1.DOC_CREATE_TIME as docCreateTime,	t1.DOC_CREATOR_ID as docCreatorId,	t1.DOC_CREATOR_NAME as docCreatorName,	t1.DOC_ALTEROR_TIME as docAlterorTime,	t1.DOC_ALTEROR_ID as docAlterorId,	t1.DOC_ALTEROR_NAME as docAlterorName	</sql>
+	t.UUID as uuid,	t.MENU_NAME as menuName,	t.MENU_CODE as menuCode,	t.MENU_ICON as menuIcon,	t.PARENT_MENU_NAME as parentMenuName,	t.PARENT_MENU_CODE as parentMenuCode,	t.MENU_PATH as menuPath,	t.MENU_ENABLE as menuEnable,	t.DOC_CREATE_TIME as docCreateTime,	t.DOC_CREATOR_ID as docCreatorId,	t.DOC_CREATOR_NAME as docCreatorName,	t.DOC_ALTEROR_TIME as docAlterorTime,	t.DOC_ALTEROR_ID as docAlterorId,	t.DOC_ALTEROR_NAME as docAlterorName	</sql>
 	
-	<select id="selectList" parameterMap="com.app.secret.entity.AppMenu" resultMap="BaseResultMap">
+	<select id="selectList" parameterType="com.app.secret.entity.AppMenu" resultMap="BaseResultMap">
 	SELECT 
 		<include refid="defaultSelectClause"/>
-	from APP_MENU
+	from APP_MENU t
 	<include refid="defaultWhereClause"/>
 		
 	</select>

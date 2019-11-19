@@ -6,16 +6,18 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SpringBootApplication
-
-@EnableAutoConfiguration(exclude = {FreeMarkerAutoConfiguration.class})
+@EnableAutoConfiguration
 @MapperScan("com.app.secret.mapper")
-@ComponentScan(basePackages = {"com.app.secret*"})
-public class SpringbootSecurityApplication {
+@ComponentScan(basePackages = {"com.app.secret"})
+@SpringBootApplication
+@EnableSwagger2
+public class SpringbootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootSecurityApplication.class, args);
+		SpringApplication.run(SpringbootApplication.class, args);
 	}
 
 }
+

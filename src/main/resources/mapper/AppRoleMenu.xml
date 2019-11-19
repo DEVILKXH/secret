@@ -10,12 +10,12 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t1.UUID as uuid,	t1.MENU_ID as menuId,	t1.ROLE_ID as roleId	</sql>
+	t.UUID as uuid,	t.MENU_ID as menuId,	t.ROLE_ID as roleId	</sql>
 	
-	<select id="selectList" parameterMap="com.app.secret.entity.AppRoleMenu" resultMap="BaseResultMap">
+	<select id="selectList" parameterType="com.app.secret.entity.AppRoleMenu" resultMap="BaseResultMap">
 	SELECT 
 		<include refid="defaultSelectClause"/>
-	from APP_ROLE_MENU
+	from APP_ROLE_MENU t
 	<include refid="defaultWhereClause"/>
 		
 	</select>

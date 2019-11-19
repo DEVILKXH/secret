@@ -17,12 +17,12 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t1.UUID as uuid,	t1.ROLE_NAME as roleName,	t1.ROLE_CODE as roleCode,	t1.ROLE_DESC as roleDesc,	t1.DOC_CREATE_TIME as docCreateTime,	t1.DOC_CREATOR_ID as docCreatorId,	t1.DOC_CREATOR_NAME as docCreatorName,	t1.DOC_ALTEROR_TIME as docAlterorTime,	t1.DOC_ALTEROR_ID as docAlterorId,	t1.DOC_ALTEROR_NAME as docAlterorName	</sql>
-	
-	<select id="selectList" parameterMap="com.app.secret.entity.Login" resultMap="BaseResultMap">
-	SELECT 
+	t.UUID as uuid,	t.ROLE_NAME as roleName,	t.ROLE_CODE as roleCode,	t.ROLE_DESC as roleDesc,	t.DOC_CREATE_TIME as docCreateTime,	t.DOC_CREATOR_ID as docCreatorId,	t.DOC_CREATOR_NAME as docCreatorName,	t.DOC_ALTEROR_TIME as docAlterorTime,	t.DOC_ALTEROR_ID as docAlterorId,	t.DOC_ALTEROR_NAME as docAlterorName	</sql>
+
+	<select id="selectList" parameterType="com.app.secret.entity.AppRole" resultMap="BaseResultMap">
+	SELECT
 		<include refid="defaultSelectClause"/>
-	from APP_ROLE
+	from APP_ROLE t
 	<include refid="defaultWhereClause"/>
 		
 	</select>

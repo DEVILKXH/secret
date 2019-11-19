@@ -1,6 +1,6 @@
 package com.app.secret.services;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface MyUserDetailService extends UserDetailsService{
+public interface MyUserDetailService {
 }

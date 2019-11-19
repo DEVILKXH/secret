@@ -25,7 +25,7 @@ public class BaseServiceImpl<T extends BaseEntity,E extends BaseMapper<T>> imple
 
 	@Override
 	public List<T> select(T entity) {
-		return mapper.select(entity);
+		return mapper.selectList(entity);
 	}
 
 	@Override

@@ -14,13 +14,13 @@ public class BaseEntity {
 	
 	protected String docCreatorName;
 	
-	protected String docAlterId;
+	protected String docAlterorId;
 	
-	protected String docAlterName;
+	protected String docAlterorName;
 	
 	protected String docCreateTime;
 	
-	protected String docAlterTime;
+	protected String docAlterorTime;
 
 	public String getUuid() {
 		return uuid;
@@ -46,20 +46,20 @@ public class BaseEntity {
 		this.docCreatorName = docCreatorName;
 	}
 
-	public String getDocAlterId() {
-		return docAlterId;
+	public String getDocAlterorId() {
+		return docAlterorId;
 	}
 
-	public void setDocAlterId(String docAlterId) {
-		this.docAlterId = docAlterId;
+	public void setDocAlterorId(String docAlterorId) {
+		this.docAlterorId = docAlterorId;
 	}
 
-	public String getDocAlterName() {
-		return docAlterName;
+	public String getDocAlterorName() {
+		return docAlterorName;
 	}
 
-	public void setDocAlterName(String docAlterName) {
-		this.docAlterName = docAlterName;
+	public void setDocAlterorName(String docAlterorName) {
+		this.docAlterorName = docAlterorName;
 	}
 
 	public String getDocCreateTime() {
@@ -70,12 +70,12 @@ public class BaseEntity {
 		this.docCreateTime = docCreateTime;
 	}
 
-	public String getDocAlterTime() {
-		return docAlterTime;
+	public String getDocAlterorTime() {
+		return docAlterorTime;
 	}
 
-	public void setDocAlterTime(String docAlterTime) {
-		this.docAlterTime = docAlterTime;
+	public void setDocAlterorTime(String docAlterorTime) {
+		this.docAlterorTime = docAlterorTime;
 	}
 	
 }
