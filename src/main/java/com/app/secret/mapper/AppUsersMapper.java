@@ -5,7 +5,7 @@ import com.app.secret.core.base.mapper.BaseMapper;
 
 public interface AppUsersMapper extends BaseMapper<AppUsers>{
 
-    AppUsers loadUserByUsername(String userName);
+    AppUsers loadUserByUserCode(String userCode);
 	
 }
 

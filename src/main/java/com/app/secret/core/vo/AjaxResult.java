@@ -71,4 +71,11 @@ public class AjaxResult<T> {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+
+	public static <T> AjaxResult<T> success(T o){
+		AjaxResult<T> ajaxResult = new AjaxResult<>();
+		ajaxResult.setStatus(200);
+		ajaxResult.setObject(o);
+		return ajaxResult;
+	}
 }

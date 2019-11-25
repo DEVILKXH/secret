@@ -26,7 +26,8 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t.UUID as uuid,	t.USER_CODE as userCode,	t.USER_NAME as userName,	t.USER_PSWD as userPswd,	t.USER_MOILE as userMoile,	t.USER_ADDRESS as userAddress,	t.USER_BIRTHDAY as userBirthday,	t.USER_GENDER as userGender,	t.USER_FACE as userFace,	t.USER_ENABLE as userEnable,	t.USER_LOGIN_COUNT as userLoginCount,	t.USER_UNSEALING as userUnsealing,	t.USER_LAST_LOGIN_TIME as userLastLoginTime,	t.DOC_CREATE_TIME as docCreateTime,	t.DOC_CREATOR_ID as docCreatorId,	t.DOC_CREATOR_NAME as docCreatorName,	t.DOC_ALTEROR_TIME as docAlterorTime,	t.DOC_ALTEROR_ID as docAlterorId,	t.DOC_ALTEROR_NAME as docAlterorName	</sql>
+		t.UUID,	t.USER_CODE, t.USER_NAME, t.USER_PSWD, t.USER_MOILE, t.USER_ADDRESS, t.USER_BIRTHDAY, t.USER_GENDER, t.USER_FACE, t.USER_ENABLE, t.USER_LOGIN_COUNT, t.USER_UNSEALING, t.USER_LAST_LOGIN_TIME, t.DOC_CREATE_TIME, t.DOC_CREATOR_ID, t.DOC_CREATOR_NAME, t.DOC_ALTEROR_TIME, t.DOC_ALTEROR_ID, t.DOC_ALTEROR_NAME
+	</sql>
 
 	<select id="selectList" parameterType="com.app.secret.entity.AppUsers" resultMap="BaseResultMap">
 	SELECT
@@ -36,11 +37,11 @@
 
 	</select>
 
-	<select id="loadUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+	<select id="loadUserByUserCode" parameterType="java.lang.String" resultMap="BaseResultMap">
 		SELECT
 		<include refid="defaultSelectClause"/>
 		from APP_USERS t
-		WHERE t.USER_CODE = #{userName}
+		WHERE t.USER_CODE = #{userCode}
 	</select>
 	
 	<sql id="defaultWhereClause">
