@@ -21,7 +21,8 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t.UUID as uuid,	t.MENU_NAME as menuName,	t.MENU_CODE as menuCode,	t.MENU_ICON as menuIcon,	t.PARENT_MENU_NAME as parentMenuName,	t.PARENT_MENU_CODE as parentMenuCode,	t.MENU_PATH as menuPath,	t.MENU_ENABLE as menuEnable,	t.DOC_CREATE_TIME as docCreateTime,	t.DOC_CREATOR_ID as docCreatorId,	t.DOC_CREATOR_NAME as docCreatorName,	t.DOC_ALTEROR_TIME as docAlterorTime,	t.DOC_ALTEROR_ID as docAlterorId,	t.DOC_ALTEROR_NAME as docAlterorName	</sql>
+		t.UUID,	t.MENU_NAME,	t.MENU_CODE,	t.MENU_ICON,	t.PARENT_MENU_NAME,	t.PARENT_MENU_CODE,	t.MENU_PATH,	t.MENU_ENABLE,	t.DOC_CREATE_TIME,	t.DOC_CREATOR_ID,	t.DOC_CREATOR_NAME,	t.DOC_ALTEROR_TIME,	t.DOC_ALTEROR_ID,	t.DOC_ALTEROR_NAME
+	</sql>
 	
 	<select id="selectList" parameterType="com.app.secret.entity.AppMenu" resultMap="BaseResultMap">
 	SELECT 

@@ -17,7 +17,8 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t.UUID as uuid,	t.ROLE_NAME as roleName,	t.ROLE_CODE as roleCode,	t.ROLE_DESC as roleDesc,	t.DOC_CREATE_TIME as docCreateTime,	t.DOC_CREATOR_ID as docCreatorId,	t.DOC_CREATOR_NAME as docCreatorName,	t.DOC_ALTEROR_TIME as docAlterorTime,	t.DOC_ALTEROR_ID as docAlterorId,	t.DOC_ALTEROR_NAME as docAlterorName	</sql>
+		t.UUID,	t.ROLE_NAME,	t.ROLE_CODE,	t.ROLE_DESC,	t.DOC_CREATE_TIME,	t.DOC_CREATOR_ID,	t.DOC_CREATOR_NAME,	t.DOC_ALTEROR_TIME,	t.DOC_ALTEROR_ID,	t.DOC_ALTEROR_NAME
+	</sql>
 
 	<select id="selectList" parameterType="com.app.secret.entity.AppRole" resultMap="BaseResultMap">
 	SELECT

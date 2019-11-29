@@ -10,7 +10,8 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t.UUID as uuid,	t.ROLE_ID as roleId,	t.USER_ID as userId	</sql>
+		t.UUID,	t.ROLE_ID,	t.USER_ID
+	</sql>
 	
 	<select id="selectList" parameterType="com.app.secret.entity.AppUserRole" resultMap="BaseResultMap">
 	SELECT 
@@ -19,6 +20,11 @@
 	<include refid="defaultWhereClause"/>
 		
 	</select>
+
+	<insert id="saveRoles">
+		INSERT INTO APP_USER_ROLE (UUID, ROLE_ID, USER_ID)
+		VALUES ()
+	</insert>
 	
 	<sql id="defaultWhereClause">
 		<trim prefix="where" prefixOverrides="and|or">

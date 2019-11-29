@@ -17,7 +17,8 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t.UUID as uuid,	t.TAG_NAME as tagName,	t.TAG_CODE as tagCode,	t.TAG_DESC as tagDesc,	t.DOC_CREATE_TIME as docCreateTime,	t.DOC_CREATOR_ID as docCreatorId,	t.DOC_CREATOR_NAME as docCreatorName,	t.DOC_ALTEROR_TIME as docAlterorTime,	t.DOC_ALTEROR_ID as docAlterorId,	t.DOC_ALTEROR_NAME as docAlterorName	</sql>
+		t.UUID,	t.TAG_NAME ,	t.TAG_CODE,	t.TAG_DESC,	t.DOC_CREATE_TIMEe,	t.DOC_CREATOR_ID,	t.DOC_CREATOR_NAME,	t.DOC_ALTEROR_TIME,	t.DOC_ALTEROR_ID,	t.DOC_ALTEROR_NAME
+	</sql>
 	
 	<select id="selectList" parameterType="com.app.secret.entity.AppTags" resultMap="BaseResultMap">
 	SELECT 

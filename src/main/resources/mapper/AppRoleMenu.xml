@@ -10,7 +10,8 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-	t.UUID as uuid,	t.MENU_ID as menuId,	t.ROLE_ID as roleId	</sql>
+		t.UUID,	t.MENU_ID,	t.ROLE_ID
+	</sql>
 	
 	<select id="selectList" parameterType="com.app.secret.entity.AppRoleMenu" resultMap="BaseResultMap">
 	SELECT 

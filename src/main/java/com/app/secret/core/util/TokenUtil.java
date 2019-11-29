@@ -8,6 +8,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Date;
+import java.util.UUID;
 
 public class TokenUtil {
 
@@ -48,5 +49,10 @@ public class TokenUtil {
         } catch (Exception e) {
             return null;
         }
+    }
+
+
+    public final static String genUUID() {
+        return UUID.randomUUID().toString();
     }
 }
