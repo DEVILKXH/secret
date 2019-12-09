@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import com.app.secret.core.util.AjaxResultUtil;
+import com.app.secret.core.util.UsersUtil;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,9 @@ public class BaseController<T extends BaseEntity, S extends BaseService<T>> {
 
 	@Autowired
 	protected S service;
+
+	@Autowired
+	private UsersUtil usersUtil;
 	
 	@RequestMapping(value = "/insertSelective.do",method={RequestMethod.POST})
 	@ResponseBody
@@ -32,6 +34,7 @@ public class BaseController<T extends BaseEntity, S extends BaseService<T>> {
 		AjaxResult<T> ajax = new AjaxResult<T>();
 		BaseEntity baseEntity = (BaseEntity)record;
 		baseEntity.setUuid(UUID.randomUUID().toString());
+		usersUtil.setDocCreator(baseEntity);
 		int flag = service.insertSelective(record);
 		return AjaxResultUtil.successOrError(flag, "成功", "失败", service.selectByPrimaryKey(baseEntity.getUuid()));
 	}
@@ -53,10 +56,10 @@ public class BaseController<T extends BaseEntity, S extends BaseService<T>> {
 	@ApiOperation(value = "更新")
 	@ApiImplicitParam(name = "token", value = "token", dataType = "String", paramType = "header", required = true)
 	public AjaxResult<T> updateSelective(@RequestBody T record){
-		BaseEntity baseEntity = (BaseEntity) record;
 		AjaxResult<T> ajax = new AjaxResult<T>();
+		usersUtil.setDocAlteror(record);
 		int flag = service.updateByPrimaryKeySelective(record);
-		return AjaxResultUtil.successOrError(flag, "成功", "失败", service.selectByPrimaryKey(baseEntity.getUuid()));
+		return AjaxResultUtil.successOrError(flag, "成功", "失败", service.selectByPrimaryKey(record.getUuid()));
 	}
 	
 	@RequestMapping(value = "/delete.do",method={RequestMethod.GET})

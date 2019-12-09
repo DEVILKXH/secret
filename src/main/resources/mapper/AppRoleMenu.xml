@@ -12,7 +12,14 @@
 	<sql id="defaultSelectClause">
 		t.UUID,	t.MENU_ID,	t.ROLE_ID
 	</sql>
-	
+
+	<insert id="saveRoleMenu">
+		INSERT INTO APP_ROLE_MENU VALUES
+		<foreach collection="list" item="record" separator="," close=";">
+			(#{record.uuid},#{record.menuId},#{record.roleId})
+		</foreach>
+	</insert>
+
 	<select id="selectList" parameterType="com.app.secret.entity.AppRoleMenu" resultMap="BaseResultMap">
 	SELECT 
 		<include refid="defaultSelectClause"/>

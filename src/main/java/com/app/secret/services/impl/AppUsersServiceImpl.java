@@ -32,6 +32,11 @@ public class AppUsersServiceImpl extends BaseServiceImpl<AppUsers, AppUsersMappe
     }
 
     @Override
+    public AppUsers loadAppUserByUserCode(String userCode) {
+        return mapper.loadUserByUserCode(userCode);
+    }
+
+    @Override
     public AjaxResult<AppUserRoleVo> addRolesByUserId(AppUserRoleVo user) {
         if(StringUtils.isEmpty(user.getUuid())) {
             return AjaxResultUtil.commomOutPut(BaseExceptionEnum.USER_UUID_CAN_NOT_BE_NULL);

@@ -21,11 +21,6 @@ public class TokenUtil {
         return new TokenUsers(users.getUuid(), users.getUserName(), token);
     }
 
-    public static void main(String []args) throws Exception{
-//        System.out.println(new BDec("admin"));
-        System.out.println(getMD5("admin"));
-    }
-
     public final static String getMD5(String s) {
         if(s==null){
             return null;
@@ -55,4 +50,9 @@ public class TokenUtil {
     public final static String genUUID() {
         return UUID.randomUUID().toString();
     }
+
+    public static void main(String []agrs) {
+        System.out.println(getMD5("admin"));
+    }
+
 }

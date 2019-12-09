@@ -11,6 +11,8 @@ public interface AppUsersService extends BaseService<AppUsers>{
 
     TokenUsers loadUserByUserCode(String userCode);
 
+    AppUsers loadAppUserByUserCode(String userCode);
+
     AjaxResult<AppUserRoleVo> addRolesByUserId(AppUserRoleVo user);
 }
 

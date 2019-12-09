@@ -20,6 +20,21 @@
 		t.UUID,	t.ROLE_NAME,	t.ROLE_CODE,	t.ROLE_DESC,	t.DOC_CREATE_TIME,	t.DOC_CREATOR_ID,	t.DOC_CREATOR_NAME,	t.DOC_ALTEROR_TIME,	t.DOC_ALTEROR_ID,	t.DOC_ALTEROR_NAME
 	</sql>
 
+	<insert id="saveRoles">
+		INSERT INTO APP_ROLE(UUID,ROLE_NAME,ROLE_CODE,ROLE_DESC,DOC_CREATE_TIME,DOC_CREATOR_ID,DOC_CREATOR_NAME) VALUES
+		<foreach collection="list" item="role" separator="," close=";">
+			(#{role.uuid},#{role.roleName},#{role.roleCode}, #{role.roleDesc}, #{role.docCreateTime}, #{role.docCreatorId}, #{role.docCreatorName})
+		</foreach>
+	</insert>
+
+	<select id="selectRolesByUserId" resultMap="BaseResultMap">
+		SELECT
+		<include refid="defaultSelectClause"/>
+		FROM APP_ROLE t
+		LEFT JOIN APP_USER_ROLE ur ON t.UUID = ur.ROLE_ID
+		WHERE ur.USER_ID = #{userId}
+	</select>
+
 	<select id="selectList" parameterType="com.app.secret.entity.AppRole" resultMap="BaseResultMap">
 	SELECT
 		<include refid="defaultSelectClause"/>

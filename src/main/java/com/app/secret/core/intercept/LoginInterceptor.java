@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.app.secret.core.base.annotation.IgnoreToken;
 import com.app.secret.core.util.StringUtil;
+import com.app.secret.core.vo.AjaxResult;
 import com.auth0.jwt.JWT;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.method.HandlerMethod;
@@ -32,15 +33,17 @@ public class LoginInterceptor implements HandlerInterceptor{
             throw  new RuntimeException("无token，请重新登录");
         }
         String userCode = JWT.decode(token).getAudience().get(0);
-	    //获取session
-        HttpSession session = request.getSession(true);
-        //判断用户ID是否存在，不存在就跳转到登录界面
-        if(session.getAttribute(Constant.USER_KEY) == null){
-        	response.sendRedirect(request.getContextPath()+"/login");
-            return false;
-        }else{
-            session.setAttribute(Constant.USER_KEY, session.getAttribute("userId"));
-            return true;
+	    if(StringUtil.isNull(userCode)){
+            AjaxResult ajax = new AjaxResult();
+            ajax.setStatus(404);
+            ajax.setMessage("用户名为空");
+	        response.getOutputStream().print("");
+	        return false;
         }
+
+        //获取session
+        HttpSession session = request.getSession(true);
+	    session.setAttribute(Constant.USER_KEY, token);
+	    return true;
     }
 }

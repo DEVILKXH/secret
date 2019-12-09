@@ -1,5 +1,6 @@
 package com.app.secret.controller;
 
+import com.app.secret.core.base.annotation.IgnoreToken;
 import com.app.secret.core.util.TokenUtil;
 import com.app.secret.core.vo.AjaxResult;
 import com.app.secret.entity.TokenUsers;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping(value = "/index")
 @Api(tags = "demo测试")
+@IgnoreToken
 public class LoginController {
 
     @Autowired

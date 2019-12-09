@@ -22,8 +22,10 @@
 	</select>
 
 	<insert id="saveRoles">
-		INSERT INTO APP_USER_ROLE (UUID, ROLE_ID, USER_ID)
-		VALUES ()
+		INSERT INTO APP_USER_ROLE (UUID, ROLE_ID, USER_ID) VALUES
+		<foreach collection="userRoles" item="role" separator="," close=";">
+			(#{role.uuid},#{role.roleId},#{role.userId})
+		</foreach>
 	</insert>
 	
 	<sql id="defaultWhereClause">

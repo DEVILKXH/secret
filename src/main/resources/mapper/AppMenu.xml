@@ -9,7 +9,7 @@
 		<result column="MENU_CODE" property="menuCode"/>
 		<result column="MENU_ICON" property="menuIcon"/>
 		<result column="PARENT_MENU_NAME" property="parentMenuName"/>
-		<result column="PARENT_MENU_CODE" property="parentMenuCode"/>
+		<result column="PARENT_MENU_ID" property="parentMenuId"/>
 		<result column="MENU_PATH" property="menuPath"/>
 		<result column="MENU_ENABLE" property="menuEnable"/>
 		<result column="DOC_CREATE_TIME" property="docCreateTime"/>
@@ -21,7 +21,7 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-		t.UUID,	t.MENU_NAME,	t.MENU_CODE,	t.MENU_ICON,	t.PARENT_MENU_NAME,	t.PARENT_MENU_CODE,	t.MENU_PATH,	t.MENU_ENABLE,	t.DOC_CREATE_TIME,	t.DOC_CREATOR_ID,	t.DOC_CREATOR_NAME,	t.DOC_ALTEROR_TIME,	t.DOC_ALTEROR_ID,	t.DOC_ALTEROR_NAME
+		t.UUID,	t.MENU_NAME,	t.MENU_CODE,	t.MENU_ICON,	t.PARENT_MENU_NAME,	t.PARENT_MENU_ID,	t.MENU_PATH,	t.MENU_ENABLE,	t.DOC_CREATE_TIME,	t.DOC_CREATOR_ID,	t.DOC_CREATOR_NAME,	t.DOC_ALTEROR_TIME,	t.DOC_ALTEROR_ID,	t.DOC_ALTEROR_NAME
 	</sql>
 	
 	<select id="selectList" parameterType="com.app.secret.entity.AppMenu" resultMap="BaseResultMap">
@@ -31,6 +31,18 @@
 	<include refid="defaultWhereClause"/>
 		
 	</select>
+
+	<select id="selectMenuByRoleId" resultMap="BaseResultMap">
+		SELECT
+		<include refid="defaultSelectClause"/>
+		FROM APP_MENU t
+		LEFT JOIN APP_ROLE_MENU rm ON t.UUID = rm.MENU_ID
+		WHERE rm.ROLE_ID IN
+		<foreach collection="list" index="index" item="role" open="(" close=")" separator=",">
+			#{role.uuid}
+		</foreach>
+
+	</select>
 	
 	<sql id="defaultWhereClause">
 		<trim prefix="where" prefixOverrides="and|or">
@@ -39,7 +51,7 @@
 		<if test="menuCode != null">and t.MENU_CODE = #{menuCode}</if>
 		<if test="menuIcon != null">and t.MENU_ICON = #{menuIcon}</if>
 		<if test="parentMenuName != null">and t.PARENT_MENU_NAME = #{parentMenuName}</if>
-		<if test="parentMenuCode != null">and t.PARENT_MENU_CODE = #{parentMenuCode}</if>
+		<if test="parentMenuId != null">and t.PARENT_MENU_ID = #{parentMenuId}</if>
 		<if test="menuPath != null">and t.MENU_PATH = #{menuPath}</if>
 		<if test="menuEnable != null">and t.MENU_ENABLE = #{menuEnable}</if>
 		<if test="docCreateTime != null">and t.DOC_CREATE_TIME = #{docCreateTime}</if>
