@@ -14,7 +14,8 @@ public class TokenUtil {
 
     public static TokenUsers genderToken(AppUsers users){
         Date start = new Date();
-        long currentTime = System.currentTimeMillis() + 60* 60 * 1000;//一小时有效时间
+        //一小时有效时间
+        long currentTime = System.currentTimeMillis() + 60* 60 * 1000;
         Date end = new Date(currentTime);
         String token = JWT.create().withAudience(users.getUuid()).withIssuedAt(start).withExpiresAt(end)
                 .sign(Algorithm.HMAC256(users.getUserPswd()));

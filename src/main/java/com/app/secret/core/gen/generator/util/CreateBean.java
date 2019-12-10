@@ -155,7 +155,9 @@ public class CreateBean {
 			String comment = d.getColumnComment();
 
 			String maxChar = name.substring(0, 1).toUpperCase();
-			str.append("\r\t").append("private ").append(type + " ").append(name).append(";   ").append(comment==null||"".equals(comment)? "" : "//"+comment);
+			str.append("\r\t").append("@Column(name = \"" + d.getColumnName() +"\")");
+			str.append("\r\t").append("@ApiModelProperty(value = \"" + (comment==null||"".equals(comment)? "" : comment) + "\")");
+			str.append("\r\t").append("private ").append(type + " ").append(name).append(";   ");
 			String method = maxChar + name.substring(1, name.length());
 			getset.append("\r\t").append("public ").append(type + " ").append("get" + method + "() {\r\t");
 			getset.append("    return this.").append(name).append(";\r\t}");

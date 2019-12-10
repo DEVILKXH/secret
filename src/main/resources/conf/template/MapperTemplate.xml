@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.${packageName}.${modelName}.mapper.$!{className}Mapper">
+<mapper namespace="com.${packageName}.${modelName}.mapper.${className}Mapper">
 	<resultMap type="com.${packageName}.${modelName}.entity.${className}" id="BaseResultMap">
 ${SQL.resultMap}
 	</resultMap>
@@ -13,7 +13,7 @@ ${SQL.resultMap}
 #end 
 	</sql>
 	
-	<select id="selectList" parameterMap="com.${packageName}.${modelName}.entity.Login" resultMap="BaseResultMap">
+	<select id="selectList" parameterMap="com.${packageName}.${modelName}.entity.${className}" resultMap="BaseResultMap">
 	SELECT 
 		<include refid="defaultSelectClause"/>
 	from $!{tableName}

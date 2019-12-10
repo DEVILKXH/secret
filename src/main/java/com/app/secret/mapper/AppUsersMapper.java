@@ -4,8 +4,6 @@ import com.app.secret.entity.AppUsers;
 import com.app.secret.core.base.mapper.BaseMapper;
 
 public interface AppUsersMapper extends BaseMapper<AppUsers>{
-
-    AppUsers loadUserByUserCode(String userCode);
-	
+    AppUsers loadAppUserByUserCode(String userCode);
 }
 

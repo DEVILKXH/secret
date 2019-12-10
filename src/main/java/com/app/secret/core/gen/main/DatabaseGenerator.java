@@ -32,9 +32,12 @@ public class DatabaseGenerator {
 	}
 
 	private static void config(String tableName) throws SQLException {
-		String codeName = "系统配置";// 中文注释 当然你用英文也是可以的
-		String entityPackage = "admin";// 实体包
-		String keyType = FtlDef.KEY_TYPE_01;// 主键生成方式 01:UUID 02:自增
+		// 中文注释 当然你用英文也是可以的
+		String codeName = "系统配置";
+		// 实体包
+		String entityPackage = "admin";
+		// 主键生成方式 01:UUID 02:自增
+		String keyType = FtlDef.KEY_TYPE_01;
 		String[] args = tableName.split("/");
 		DatabaseGeneratorFactory.DatabaseGenerate(args[0], args[1], args[2], codeName, entityPackage, keyType);
 	}

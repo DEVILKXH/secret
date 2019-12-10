@@ -1,8 +1,1 @@
-package com.app.secret.entity;
-
-import com.app.secret.core.base.entity.BaseEntity;
-
-public class AppRoleMenu extends BaseEntity{	
-		private java.lang.String uuid;   	private java.lang.String menuId;   	private java.lang.String roleId;   	public java.lang.String getUuid() {	    return this.uuid;	}	public void setUuid(java.lang.String uuid) {	    this.uuid=uuid;	}	public java.lang.String getMenuId() {	    return this.menuId;	}	public void setMenuId(java.lang.String menuId) {	    this.menuId=menuId;	}	public java.lang.String getRoleId() {	    return this.roleId;	}	public void setRoleId(java.lang.String roleId) {	    this.roleId=roleId;	}
-}
-
+package com.app.secret.entity;import com.app.secret.core.base.entity.BaseEntity;import io.swagger.annotations.ApiModel;import io.swagger.annotations.ApiModelProperty;import javax.persistence.Column;import javax.persistence.Table;/** * @author kexiaohong */@Table(name = "APP_ROLE_MENU")@ApiModel(value = "菜单角色")public class AppRoleMenu extends BaseEntity {    @Column(name = "MENU_ID")    @ApiModelProperty(value = "菜单ID")    private java.lang.String menuId;    @Column(name = "ROLE_ID")    @ApiModelProperty(value = "角色ID")    private java.lang.String roleId;    public java.lang.String getMenuId() {        return this.menuId;    }    public void setMenuId(java.lang.String menuId) {        this.menuId = menuId;    }    public java.lang.String getRoleId() {        return this.roleId;    }    public void setRoleId(java.lang.String roleId) {        this.roleId = roleId;    }}

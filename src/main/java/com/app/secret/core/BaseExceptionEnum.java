@@ -1,17 +1,47 @@
 package com.app.secret.core;
 
+/**
+ * @author kexiaohong
+ * 基础报错信息
+ */
 public enum BaseExceptionEnum {
 
-    USER_CODE_NOT_FOUND(1_00_001, "USER_CODE_NOT_FOUND", "用户账号错误"),
+    /**
+     * 用户账号错误
+     */
+    USER_CODE_NOT_FOUND(1_00_001, "USER_CODE_NOT_FOUND", "用户账号或密码错误"),
+    /**
+     * 用户名不能为空
+     */
     USER_CODE_CAN_NOT_BE_NULL(1_00_002, "USER_CODE_CAN_NOT_BE_NULL", "用户名不能为空"),
+    /**
+     * 昵称不能为空
+     */
     USER_NAME_CAN_NOT_BE_NULL(1_00_002, "USER_NAME_CAN_NOT_BE_NULL", "昵称不能为空"),
+    /**
+     * 密码不能为空
+     */
     USER_PSWD_CAN_NOT_BE_NULL(1_00_003, "USER_PSWD_CAN_NOT_BE_NULL", "密码不能为空"),
+    /**
+     * 密码不正确
+     */
     USER_PSWD_IS_NOT_CORRECT(1_00_004, "USER_PSWD_IS_NOT_CORRECT", "密码不正确"),
+    /**
+     * 用户ID不能为空
+     */
     USER_UUID_CAN_NOT_BE_NULL(1_00_005, "USER_UUID_CAN_NOT_BE_NULL", "用户ID不能为空"),
+    /**
+     * 用户角色不能为空
+     */
     USER_ROLE_CAN_NOT_BE_NULL(1_00_005, "USER_ROLE_CAN_NOT_BE_NULL", "用户角色不能为空"),
 
-
+    /**
+     * 更新用户角色失败
+     */
     DELETE_USER_ROLE_FAIL(2_00_001, "DELETE_USER_ROLE_FAIL", "更新用户角色失败"),
+    /**
+     * 位置错误
+     */
     UN_KNOWN_ERROR(9_99_999, "UN_KNOWN_ERROR", "位置错误");
 
     private int code;

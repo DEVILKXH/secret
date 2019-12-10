@@ -7,7 +7,6 @@ import com.app.secret.entity.AppRole;
 import java.util.List;
 
 public interface AppMenuMapper extends BaseMapper<AppMenu>{
-
-   List<AppMenu> selectMenuByRoleId(List<AppRole> roles);
+    List<AppMenu> selectMenuByRoleId(List<AppRole> roles);
 }
 

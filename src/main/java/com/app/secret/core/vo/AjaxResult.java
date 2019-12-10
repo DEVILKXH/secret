@@ -2,6 +2,7 @@ package com.app.secret.core.vo;
 
 import java.util.List;
 
+import com.app.secret.core.BaseExceptionEnum;
 import com.app.secret.core.util.StringUtil;
 
 public class AjaxResult<T> {
@@ -76,6 +77,13 @@ public class AjaxResult<T> {
 		AjaxResult<T> ajaxResult = new AjaxResult<>();
 		ajaxResult.setStatus(200);
 		ajaxResult.setObject(o);
+		return ajaxResult;
+	}
+
+	public static <T> AjaxResult<T> fail(BaseExceptionEnum enums){
+		AjaxResult<T> ajaxResult = new AjaxResult<>();
+		ajaxResult.setStatus(enums.getCode());
+		ajaxResult.setMessage(enums.getMsg());
 		return ajaxResult;
 	}
 }
