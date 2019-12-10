@@ -6,5 +6,5 @@ import tk.mybatis.mapper.common.Mapper;
 
 
 public interface BaseMapper<E> extends Mapper<E>{
-	public List<E> selectList(E entity);
+	List<E> selectList(E entity);
 }

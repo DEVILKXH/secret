@@ -1,7 +1,6 @@
 package com.app.secret.controller;
 
-import com.app.secret.core.base.annotation.IgnoreToken;
-import com.app.secret.core.util.TokenUtil;
+import com.app.secret.core.base.annotation.IgnoreAccessToken;
 import com.app.secret.core.vo.AjaxResult;
 import com.app.secret.entity.TokenUsers;
 import com.app.secret.services.AppUsersService;
@@ -12,13 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping(value = "/index")
 @Api(tags = "demo测试")
-@IgnoreToken
+@IgnoreAccessToken
 public class LoginController {
 
     @Autowired

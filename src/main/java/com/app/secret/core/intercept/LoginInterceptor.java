@@ -4,11 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.app.secret.core.base.annotation.IgnoreToken;
+import com.app.secret.core.base.annotation.IgnoreAccessToken;
 import com.app.secret.core.util.StringUtil;
 import com.app.secret.core.vo.AjaxResult;
 import com.auth0.jwt.JWT;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -25,7 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor{
         HandlerMethod handlerMethod = (HandlerMethod)handler;
         Method method = handlerMethod.getMethod();
         Class<?> c = method.getDeclaringClass();
-        if(c.isAnnotationPresent(IgnoreToken.class) || method.isAnnotationPresent(IgnoreToken.class)) {
+        if(c.isAnnotationPresent(IgnoreAccessToken.class) || method.isAnnotationPresent(IgnoreAccessToken.class)) {
             return true;
         }
         String token = request.getHeader("token");
@@ -40,7 +39,6 @@ public class LoginInterceptor implements HandlerInterceptor{
 	        response.getOutputStream().print("");
 	        return false;
         }
-
         //获取session
         HttpSession session = request.getSession(true);
 	    session.setAttribute(Constant.USER_KEY, token);
