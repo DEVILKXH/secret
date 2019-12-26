@@ -8,10 +8,13 @@ import com.app.secret.entity.AppUsers;
 import com.app.secret.entity.TokenUsers;
 import com.app.secret.services.AppUsersService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -23,6 +26,19 @@ public class AppUsersController extends BaseController<AppUsers, AppUsersService
 
     @Autowired
     UsersUtil usersUtil;
+
+    @RequestMapping(value = "/selectOne.do",method={RequestMethod.POST})
+    @ResponseBody
+    @ApiOperation(value = "查询(单个)")
+    @ApiImplicitParam(name = "token", value = "token", dataType = "String", paramType = "header", required = true)
+    @Override
+    public AppUsers selectOne(@RequestBody AppUsers record){
+        List<AppUsers> records = service.select(record);
+        if(null == records || records.size() == 0 ){
+            return null;
+        }
+        return records.get(0);
+    }
 
     @RequestMapping(value = "/saveUserTag")
     @ResponseBody
