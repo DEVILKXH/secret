@@ -73,10 +73,23 @@ public class AjaxResult<T> {
 		this.info = info;
 	}
 
+	public static AjaxResult success(){
+		AjaxResult ajaxResult = new AjaxResult<>();
+		ajaxResult.setStatus(200);
+		return ajaxResult;
+	}
+
 	public static <T> AjaxResult<T> success(T o){
 		AjaxResult<T> ajaxResult = new AjaxResult<>();
 		ajaxResult.setStatus(200);
 		ajaxResult.setObject(o);
+		return ajaxResult;
+	}
+
+	public static <T> AjaxResult<T> success(List<T> list){
+		AjaxResult<T> ajaxResult = new AjaxResult<>();
+		ajaxResult.setStatus(200);
+		ajaxResult.setResult(list);
 		return ajaxResult;
 	}
 
@@ -86,4 +99,5 @@ public class AjaxResult<T> {
 		ajaxResult.setMessage(enums.getMsg());
 		return ajaxResult;
 	}
+
 }

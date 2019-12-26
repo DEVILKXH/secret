@@ -39,6 +39,11 @@ public enum BaseExceptionEnum {
      * 更新用户角色失败
      */
     DELETE_USER_ROLE_FAIL(2_00_001, "DELETE_USER_ROLE_FAIL", "更新用户角色失败"),
+
+    /**
+     * 更新用户标签失败
+     */
+    SAVE_USER_TAG_FAIL(2_00_002, "SAVE_USER_TAG_FAIL", "更新用户标签失败"),
     /**
      * 位置错误
      */

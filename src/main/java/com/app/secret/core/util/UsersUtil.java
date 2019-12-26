@@ -2,12 +2,10 @@ package com.app.secret.core.util;
 
 import com.app.secret.core.base.entity.BaseEntity;
 import com.app.secret.core.constant.Constant;
-import com.app.secret.entity.AppMenu;
-import com.app.secret.entity.AppRole;
-import com.app.secret.entity.AppUsers;
-import com.app.secret.entity.TokenUsers;
+import com.app.secret.entity.*;
 import com.app.secret.services.AppMenuService;
 import com.app.secret.services.AppRoleService;
+import com.app.secret.services.AppTagsService;
 import com.app.secret.services.AppUsersService;
 import com.auth0.jwt.JWT;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +33,9 @@ public class UsersUtil {
     @Autowired
     private AppMenuService menuService;
 
+    @Autowired
+    private AppTagsService tagsService;
+
     public TokenUsers getCurrentUser(){
         String token = (String)session.getAttribute(Constant.USER_KEY);
         return getCurrentUser(token);
@@ -59,6 +60,10 @@ public class UsersUtil {
         TokenUsers tokenUsers = getCurrentUser();
         List<AppRole> roles = getCurrentRole();
         return menuService.selectMenuByRoleId(roles);
+    }
+
+    public List<AppTags> getCurrentTags(String userId) {
+        return tagsService.getTagListByUserId(userId);
     }
 
     public void setDocCreator(BaseEntity baseEntity) {

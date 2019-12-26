@@ -246,7 +246,7 @@ public class CreateBean {
 		else if (dataType.contains("date"))
 			dataType = "java.util.Date";
 		else if (dataType.contains("time"))
-			dataType = "java.sql.Timestamp";
+			dataType = "java.util.Date";
 		else if (dataType.contains("clob"))
 			dataType = "java.sql.Clob";
 		else {

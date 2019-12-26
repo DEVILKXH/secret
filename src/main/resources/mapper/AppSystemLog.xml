@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.secret.mapper.AppSystemLogMapper">
+	<resultMap type="com.app.secret.entity.AppSystemLog" id="BaseResultMap">
+		<result column="UUID" property="uuid"/>
+		<result column="SESSION_ID" property="sessionId"/>
+		<result column="ACCESS_NAME" property="accessName"/>
+		<result column="ACCESS_TOKEN" property="accessToken"/>
+		<result column="ACCESS_TIME" property="accessTime"/>
+		<result column="ACCESS_IP" property="accessIp"/>
+		<result column="ACCESS_SYSTEM" property="accessSystem"/>
+		<result column="DOC_CREATE_TIME" property="docCreateTime"/>
+		<result column="DOC_CREATOR_ID" property="docCreatorId"/>
+		<result column="DOC_CREATOR_NAME" property="docCreatorName"/>
+		<result column="DOC_ALTEROR_TIME" property="docAlterorTime"/>
+		<result column="DOC_ALTEROR_ID" property="docAlterorId"/>
+		<result column="DOC_ALTEROR_NAME" property="docAlterorName"/>
+	</resultMap>
+	
+	<sql id="defaultSelectClause">
+	t1.UUID as uuid,	t1.SESSION_ID as sessionId,	t1.ACCESS_NAME as accessName,	t1.ACCESS_TOKEN as accessToken,	t1.ACCESS_TIME as accessTime,	t1.ACCESS_IP as accessIp,	t1.ACCESS_SYSTEM as accessSystem,	t1.DOC_CREATE_TIME as docCreateTime,	t1.DOC_CREATOR_ID as docCreatorId,	t1.DOC_CREATOR_NAME as docCreatorName,	t1.DOC_ALTEROR_TIME as docAlterorTime,	t1.DOC_ALTEROR_ID as docAlterorId,	t1.DOC_ALTEROR_NAME as docAlterorName	</sql>
+	
+	<select id="selectList" parameterType="com.app.secret.entity.AppSystemLog" resultMap="BaseResultMap">
+	SELECT 
+		<include refid="defaultSelectClause"/>
+	from APP_SYSTEM_LOG
+	<include refid="defaultWhereClause"/>
+		
+	</select>
+	
+	<sql id="defaultWhereClause">
+		<trim prefix="where" prefixOverrides="and|or">
+		<if test="uuid != null">and t.UUID = #{uuid}</if>
+		<if test="sessionId != null">and t.SESSION_ID = #{sessionId}</if>
+		<if test="accessName != null">and t.ACCESS_NAME = #{accessName}</if>
+		<if test="accessToken != null">and t.ACCESS_TOKEN = #{accessToken}</if>
+		<if test="accessTime != null">and t.ACCESS_TIME = #{accessTime}</if>
+		<if test="accessIp != null">and t.ACCESS_IP = #{accessIp}</if>
+		<if test="accessSystem != null">and t.ACCESS_SYSTEM = #{accessSystem}</if>
+		<if test="docCreateTime != null">and t.DOC_CREATE_TIME = #{docCreateTime}</if>
+		<if test="docCreatorId != null">and t.DOC_CREATOR_ID = #{docCreatorId}</if>
+		<if test="docCreatorName != null">and t.DOC_CREATOR_NAME = #{docCreatorName}</if>
+		<if test="docAlterorTime != null">and t.DOC_ALTEROR_TIME = #{docAlterorTime}</if>
+		<if test="docAlterorId != null">and t.DOC_ALTEROR_ID = #{docAlterorId}</if>
+		<if test="docAlterorName != null">and t.DOC_ALTEROR_NAME = #{docAlterorName}</if>
+		</trim>
+	</sql>
+	
+</mapper>   

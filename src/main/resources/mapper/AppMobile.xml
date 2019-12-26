@@ -2,12 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.app.secret.mapper.AppTagsMapper">
-	<resultMap type="com.app.secret.entity.AppTags" id="BaseResultMap">
+<mapper namespace="com.app.secret.mapper.AppMobileMapper">
+	<resultMap type="com.app.secret.entity.AppMobile" id="BaseResultMap">
 		<result column="UUID" property="uuid"/>
-		<result column="TAG_NAME" property="tagName"/>
-		<result column="TAG_CODE" property="tagCode"/>
-		<result column="TAG_DESC" property="tagDesc"/>
+		<result column="NAME" property="name"/>
+		<result column="MOBILE" property="mobile"/>
+		<result column="TAG" property="tag"/>
+		<result column="DESC" property="desc"/>
 		<result column="DOC_CREATE_TIME" property="docCreateTime"/>
 		<result column="DOC_CREATOR_ID" property="docCreatorId"/>
 		<result column="DOC_CREATOR_NAME" property="docCreatorName"/>
@@ -17,31 +18,29 @@
 	</resultMap>
 	
 	<sql id="defaultSelectClause">
-		t.UUID,	t.TAG_NAME ,	t.TAG_CODE,	t.TAG_DESC,	t.DOC_CREATE_TIMEe,	t.DOC_CREATOR_ID,	t.DOC_CREATOR_NAME,	t.DOC_ALTEROR_TIME,	t.DOC_ALTEROR_ID,	t.DOC_ALTEROR_NAME
-	</sql>
+	t1.UUID as uuid,	t1.NAME as name,	t1.MOBILE as mobile,	t1.TAG as tag,	t1.DESC as desc,	t1.DOC_CREATE_TIME as docCreateTime,	t1.DOC_CREATOR_ID as docCreatorId,	t1.DOC_CREATOR_NAME as docCreatorName,	t1.DOC_ALTEROR_TIME as docAlterorTime,	t1.DOC_ALTEROR_ID as docAlterorId,	t1.DOC_ALTEROR_NAME as docAlterorName	</sql>
 	
-	<select id="selectList" parameterType="com.app.secret.entity.AppTags" resultMap="BaseResultMap">
+	<select id="selectList" parameterType="com.app.secret.entity.AppMobile" resultMap="BaseResultMap">
 	SELECT 
 		<include refid="defaultSelectClause"/>
-	from APP_TAGS t
+	from APP_MOBILE
 	<include refid="defaultWhereClause"/>
 		
 	</select>
 
-	<select id="getTagListByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
-		SELECT
-		<include refid="defaultSelectClause"/>
-		from APP_TAGS t
-		LEFT JOIN APP_USER_TAG tag ON t.UUID = tag.TAG_ID
-		WHERE tag.USER_ID = #{userId}
+	<select id="getMobileByUserId">
+		SELECT m.* FROM APP_MOBILE m
+		LEFT JOIN APP_USER_TAG t ON m.tag = t.TAG_ID
+		WHERE t.USER_ID = #{userId}
 	</select>
 	
 	<sql id="defaultWhereClause">
 		<trim prefix="where" prefixOverrides="and|or">
 		<if test="uuid != null">and t.UUID = #{uuid}</if>
-		<if test="tagName != null">and t.TAG_NAME = #{tagName}</if>
-		<if test="tagCode != null">and t.TAG_CODE = #{tagCode}</if>
-		<if test="tagDesc != null">and t.TAG_DESC = #{tagDesc}</if>
+		<if test="name != null">and t.NAME = #{name}</if>
+		<if test="mobile != null">and t.MOBILE = #{mobile}</if>
+		<if test="tag != null">and t.TAG = #{tag}</if>
+		<if test="desc != null">and t.DESC = #{desc}</if>
 		<if test="docCreateTime != null">and t.DOC_CREATE_TIME = #{docCreateTime}</if>
 		<if test="docCreatorId != null">and t.DOC_CREATOR_ID = #{docCreatorId}</if>
 		<if test="docCreatorName != null">and t.DOC_CREATOR_NAME = #{docCreatorName}</if>
